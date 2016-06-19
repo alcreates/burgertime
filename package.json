@@ -1,0 +1,25 @@
+{
+  "name": "newburger",
+  "version": "1.0.0",
+  "description": "burger assignment sequelized",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alcreates/newburger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alcreates/newburger/issues"
+  },
+  "homepage": "https://github.com/alcreates/newburger#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mysql": "^2.10.2",
+    "sequelize": "^3.23.1"
+  }
+}
