@@ -30,7 +30,7 @@
                         <label class="sr-only" for="">Make your Way! </label>
                         <input type="" class="form-control" id="" placeholder="Make your own burger">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id='enter' class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -59,7 +59,7 @@
     <script type="text/javascript">
     var currentURL = window.location.origin;
 
-    function start() {
+  
         $.get(currentURL + '/api/burgersList', function(data) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
@@ -72,11 +72,11 @@
                 }
             }
         });
-    }
+    
+   
+    
 
-    start();
-
-    $("button").on("click", function() {
+    $("#enter").on("click", function() {
 
         var newburger = {
             burger_name: $("input").val()
@@ -100,7 +100,8 @@
         $.post(currentURL + "/api/update", eaten)
             .done(function(data) {
                 window.location = "http://newburger.herokuapp.com/";
-                alert("burger devoured");
+                //
+                
             })
     });
     //sample post. 
