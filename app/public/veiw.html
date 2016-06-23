@@ -81,7 +81,7 @@
                 $.post(currentURL + "/api/new", newburger)
                 .done(function(data){
                     
-                        
+                   window.location = "http://newburger.herokuapp.com/";     
                       
                     
                 })
@@ -94,7 +94,7 @@
                 console.log(eaten);
                 $.post(currentURL + "/api/update", eaten)
                 .done(function(data){
-                    window.location = "http://newburger.herokuapp.com/?";
+                    window.location = "http://newburger.herokuapp.com/";
                     alert("burger devoured");
                 })
             });
