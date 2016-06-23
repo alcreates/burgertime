@@ -11,9 +11,9 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
 
 <body>
@@ -38,7 +38,9 @@
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <h2>Burger List</h2>
-                    <div ><ol id="burgerList"></ol></div>
+                    <div>
+                        <ol id="burgerList"></ol>
+                    </div>
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 </div>
@@ -48,7 +50,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -56,59 +57,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script type="text/javascript">
-    		var currentURL = window.location.origin;
+    var currentURL = window.location.origin;
 
-    		$.get(currentURL + '/api/burgersList', function(data){
-                console.log(data);
-    			for (var i = 0; i < data.length; i++) {
-    				if(data[i].devoured == 0){
+    function start() {
+        $.get(currentURL + '/api/burgersList', function(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].devoured == 0) {
 
-                    $("#burgerList").append("<li>" + data[i].burger_name + " <button type='button' class='btn btn-default' id='eat' data-id ='"+ data[i].id + "'>EAT</button>"+ "</li>" );
-                    }else{
+                    $("#burgerList").append("<li>" + data[i].burger_name + " <button type='button' class='btn btn-default' id='eat' data-id ='" + data[i].id + "'>EAT</button>" + "</li>");
+                } else {
 
-                        $("#burgerEaten").append("<li> "+ data[i].burger_name + " </li>");
-                    }
-    			}
-    		});
+                    $("#burgerEaten").append("<li> " + data[i].burger_name + " </li>");
+                }
+            }
+        });
+    }
 
-            $("button").on("click", function(){
-                
-                var newburger = {
-                    burger_name : $("input").val()
-                   
+    start();
 
-                } 
-                $.post(currentURL + "/api/new", newburger)
-                .done(function(data){
-                    
-                   window.location = "http://newburger.herokuapp.com/";     
-                      
-                    
-                })
-            });
+    $("button").on("click", function() {
 
-            $(document).on('click', '#eat', function(){
-                    var eaten = {
-                        id : $(this).data("id")
-                    }
-                console.log(eaten);
-                $.post(currentURL + "/api/update", eaten)
-                .done(function(data){
-                    window.location = "http://newburger.herokuapp.com/";
-                    alert("burger devoured");
-                })
-            });
-    	//sample post. 
-        // var currentURL = window.location.origin;
+        var newburger = {
+            burger_name: $("input").val()
 
-        //     $.post( currentURL + "/api/new", newCharacter)
-        //         .done(function(data){
-        //             console.log(data);
-        //             alert("Adding character...")
-        //         })
 
-    
+        }
+        $.post(currentURL + "/api/new", newburger)
+            .done(function(data) {
 
+               start();
+
+
+            })
+    });
+
+    $(document).on('click', '#eat', function() {
+        var eaten = {
+            id: $(this).data("id")
+        }
+        console.log(eaten);
+        $.post(currentURL + "/api/update", eaten)
+            .done(function(data) {
+                start();
+            })
+    });
+    //sample post. 
+    // var currentURL = window.location.origin;
+
+    //     $.post( currentURL + "/api/new", newCharacter)
+    //         .done(function(data){
+    //             console.log(data);
+    //             alert("Adding character...")
+    //         })
     </script>
 </body>
 
