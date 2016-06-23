@@ -99,7 +99,8 @@
         console.log(eaten);
         $.post(currentURL + "/api/update", eaten)
             .done(function(data) {
-                start();
+                window.location = "http://newburger.herokuapp.com/";
+                alert("burger devoured");
             })
     });
     //sample post. 
