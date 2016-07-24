@@ -7,7 +7,7 @@ var Burgers	= require("../model/burgers.js"); // Pulls out the Character Model
 module.exports = function(app){
 
 	// Search for Specific Character (or all characters) then provides JSON
-	app.get('/api/burgersList', function(req, res){
+	app.get('/api/watchList', function(req, res){
 			console.log("received request");
 		
 			// Otherwise display the data for all of the characters. 
